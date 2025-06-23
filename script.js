@@ -25,7 +25,7 @@ for (let i = 0; i < 1000; i++) {
 }
 
 function animate() {
-    ctx.fillStyle = 'rgba(252, 252, 252, 0.1)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     particles.forEach(p => {
@@ -34,7 +34,7 @@ function animate() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'red';
+        ctx.fillStyle = 'rgba(255, 0, 179)';
         ctx.fill();
     });
 
