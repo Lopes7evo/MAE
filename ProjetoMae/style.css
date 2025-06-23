@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+    margin: 0;
+    overflow: hidden;
+}
+
+.love__you {
+    text-align: center;
+    color: red;
+    font-size: 3em;
+    margin-top: 50px;
+    user-select: none;
+    text-shadow: 0 0 20px red;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+}
