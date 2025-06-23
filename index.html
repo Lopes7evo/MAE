@@ -1,15 +1,92 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Te Amo Filha</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1 class="love__you">Te Amo Filha!</h1>
-    <canvas id="heart"></canvas>
+    <title>Para minha mãe ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .floating {
+            position: fixed;
+            font-size: 24px;
+            animation: float 4s linear infinite;
+            pointer-events: none;
+            z-index: 999;
+        }
 
-    <script src="script.js"></script>
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-pink-200 flex flex-col items-center justify-center h-screen overflow-hidden">
+
+    <!-- Música de fundo -->
+    <audio id="music" loop>
+        <source src="romantica.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <!-- Conteúdo principal -->
+    <div id="container" class="text-center">
+        <h1 id="text" class="text-4xl font-bold text-pink-800 mb-8">
+            Oi mãe, fiz isso pra você ❤️
+        </h1>
+
+        <button 
+            id="button" 
+            class="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300">
+            Clique aqui
+        </button>
+    </div>
+
+    <!-- Script dos efeitos -->
+    <script>
+        const button = document.getElementById('button');
+        const text = document.getElementById('text');
+        const music = document.getElementById('music');
+
+        button.addEventListener('click', () => {
+            text.innerHTML = "💖❤️💕 Te amo muito, você é a melhor mãe do mundo! 💝💗💘";
+            button.classList.add('hidden');
+
+            startEffects();
+            music.play();
+        });
+
+        function startEffects() {
+            const interval = setInterval(() => {
+                createFloating(["💖","❤️","💕","💝","💗","💘","💓"]);
+                createFloating(["⭐","🌟","✨","💫"]);
+            }, 500);
+
+            setTimeout(() => {
+                clearInterval(interval);
+            }, 5000);
+        }
+
+        function createFloating(icons) {
+            const elem = document.createElement('div');
+            elem.classList.add('floating');
+            elem.style.left = Math.random() * 100 + "vw";
+            elem.style.top = "100vh";
+            elem.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+            document.body.appendChild(elem);
+
+            setTimeout(() => {
+                elem.remove();
+            }, 4000);
+        }
+    </script>
+
 </body>
 </html>
